@@ -73,6 +73,13 @@ A bar chart visualizing the Class distribution clearly showed a towering bar for
 ## Data Preprocessing
 Before feeding the dataset to the machine learning model, specific preprocessing steps were applied to optimize feature scales and relevance.
 
+**Code:**
+
+```df['Amount'] = StandardScaler().fit_transform(df[['Amount']])
+df.drop('Time', axis=1, inplace=True)
+
+```
+
 ### Explanation & Results:
 - **Amount Feature Scaling:** The `Amount` feature, which varied significantly in magnitude, was scaled using `StandardScaler`. This transformation centers the data around zero with a unit standard deviation, making its range comparable to the PCA-transformed `V` features. Scaling ensures that features with larger numerical values do not disproportionately influence the model's learning process.
 - **Time Feature Removal:** The Time column was dropped from the dataset. While it indicates the chronological order of transactions, its raw value might not be directly predictive of fraud patterns, especially since the other core features (`V1-V28`) are already time-independent due to PCA. Removing it helps simplify the model and reduce potential noise.
