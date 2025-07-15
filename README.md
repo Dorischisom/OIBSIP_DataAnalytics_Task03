@@ -75,7 +75,8 @@ Before feeding the dataset to the machine learning model, specific preprocessing
 
 **Code:**
 
-```df['Amount'] = StandardScaler().fit_transform(df[['Amount']])
+```
+df['Amount'] = StandardScaler().fit_transform(df[['Amount']])
 df.drop('Time', axis=1, inplace=True)
 
 ```
