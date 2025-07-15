@@ -83,6 +83,7 @@ df.drop('Time', axis=1, inplace=True)
 
 ### Explanation & Results:
 - **Amount Feature Scaling:** The `Amount` feature, which varied significantly in magnitude, was scaled using `StandardScaler`. This transformation centers the data around zero with a unit standard deviation, making its range comparable to the PCA-transformed `V` features. Scaling ensures that features with larger numerical values do not disproportionately influence the model's learning process.
+
 - **Time Feature Removal:** The Time column was dropped from the dataset. While it indicates the chronological order of transactions, its raw value might not be directly predictive of fraud patterns, especially since the other core features (`V1-V28`) are already time-independent due to PCA. Removing it helps simplify the model and reduce potential noise.
 
 ## Model Training and Evaluation
@@ -138,7 +139,10 @@ This curve visualizes the trade-off between precision and recall at various prob
 
 ### Result:
 
-- Average Precision (AUPRC): 0.8227. An AUPRC of 0.82 is considered good for such an imbalanced dataset, demonstrating the model's solid capability in distinguishing the rare fraud class from the majority legitimate class. A score closer to 1.0 would indicate a nearly perfect model.
+- **Average Precision (AUPRC): 0.8227.** **An AUPRC of 0.82** is considered good for such an imbalanced dataset, demonstrating the model's solid capability in distinguishing the rare fraud class from the majority legitimate class. A score closer to 1.0 would indicate a nearly perfect model.
 
 ## Conclusion
 This analysis successfully demonstrates a complete machine learning pipeline for credit card fraud detection. The Random Forest Classifier proved effective, achieving a respectable AUPRC of 0.82. While the model shows high precision in its fraud predictions, there remains an opportunity to enhance its recall to minimize undetected fraudulent transactions.
+
+
+Check Full Analysis in the `Fraud Detection Analysis.ipynb` file
