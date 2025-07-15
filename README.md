@@ -16,9 +16,9 @@ The dataset `creditcard.csv` contains numerical input variables primarily transf
 | `Class`     | The response variable: `1` for fraud, `0` for legitimate.          |
 
 ## Data Loading & Initial Inspection
-The first step in our analysis involves loading the `creditcard.csv` dataset and performing initial checks to understand its structure, content, and identify any immediate data quality issues like missing values.
+The first step in our analysis involved loading the `creditcard.csv` dataset and performing initial checks to understand its structure, content, and identify any immediate data quality issues like missing values.
 
-Code:
+**Code:**
 ```import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,21 +29,21 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, precision_recall_curve, average_precision_score
 
-# Load the dataset
+# To Load the dataset
 df = pd.read_csv("creditcard.csv")
 
-# Display the shape (number of rows, number of columns)
+# To Display the shape (number of rows, number of columns)
 print("Dataset Shape:", df.shape)
 
-# Display the first few rows of the dataset
+# To Display the first few rows of the dataset
 print("\nFirst 5 rows of the dataset:")
 print(df.head())
 
-# Check data types and non-null counts for each column
+# To Check data types and non-null counts for each column
 print("\nDataFrame Info:")
 df.info()
 
-# Check for missing values in each column
+# To Check for missing values in each column
 print("\nMissing values per column:")
 print(df.isnull().sum())
 
@@ -52,7 +52,7 @@ print(df.isnull().sum())
 
 ## Exploratory Data Analysis (EDA)
 
-EDA was performed to gain insights into the dataset's characteristics, especially the distribution of the target variable (Class), which is crucial for fraud detection.
+EDA was performed to gain insights into the dataset's characteristics, especially the distribution of the target variable (`Class`), which is crucial for fraud detection.
 
 ### Result:
 
@@ -63,7 +63,7 @@ EDA was performed to gain insights into the dataset's characteristics, especiall
 | `1`          | Represents **fraudulent** transactions. Its value (`0.172749`) indicates that only about **0.17%** of all transactions are fraudulent.            |
 
 
-This means approximately 99.83% of transactions are legitimate (Class 0), while only a tiny 0.17% are fraudulent (Class 1). This severe class imbalance is the primary challenge in this fraud detection problem, as it can make models biased towards the majority class if not handled carefully.
+This means approximately **99.83% of transactions are legitimate** (`Class 0`), while only a tiny **0.17% are fraudulent** (`Class 1`). This severe class imbalance is the primary challenge in this fraud detection problem, as it can make models biased towards the majority class if not handled carefully.
 
 A bar chart visualizing the Class distribution clearly showed a towering bar for legitimate transactions and a barely visible bar for fraudulent ones, visually emphasizing the rare nature of fraud.
 
@@ -71,7 +71,7 @@ A bar chart visualizing the Class distribution clearly showed a towering bar for
 
 
 ## Data Preprocessing
-Before feeding the dataset to the machine learning model, specific preprocessing steps were applied to optimize feature scales and relevance.
+Before taking the dataset through machine learning modelling, specific preprocessing steps were applied to optimize feature scales and relevance.
 
 **Code:**
 
@@ -125,13 +125,17 @@ This phase involved preparing the data for the machine learning model, training 
 
 ### For the fraud class (1):
 
-- **Precision (0.9573):** When the model predicts fraud, it is correct about 95.73% of the time, indicating a low rate of false alarms.
+- **Precision (0.9573):** When the model predicts fraud, it is correct about **95.73%** of the time, indicating a **low rate of false alarms.**
 
-- **Recall (0.7568):** The model successfully identified 75.68% of all actual fraudulent transactions. This means approximately 24.32% of actual frauds were missed. Improving recall is a common goal in fraud detection to minimize undetected fraud.
+- **Recall (0.7568):** The model successfully identified **75.68%** of all actual fraudulent transactions. This means approximately **24.32% of actual frauds were missed.** Improving recall is a common goal in fraud detection to minimize undetected fraud.
 
 ### Precision-Recall Curve (PRC): 
 
-This curve visualizes the trade-off between precision and recall at various probability thresholds. For imbalanced datasets, the PRC is a more informative evaluation tool than the ROC curve. The plot showed the relationship, ideally aiming for the curve to be close to the top-right corner.
+This curve visualizes the trade-off between precision and recall at various probability thresholds. 
+
+For imbalanced datasets, the PRC is a more informative evaluation tool than the ROC curve. 
+
+The plot showed the relationship, ideally aiming for the curve to be close to the top-right corner.
 
 ![Precision_curve](Precision_curve/Precision_curve.png)
 
